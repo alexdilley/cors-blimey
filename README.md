@@ -1,6 +1,8 @@
 # cors-blimey
 Serverless CORS with cookie credentials. [[Demo](https://pedantic-brown-b023ed.netlify.com/)]
 
+## Predicament
+
 Un-[safe](https://developer.mozilla.org/en-US/docs/Glossary/Safe) methods will
 cause a preflight for requests with a `Content-Type` of `application/json`.
 Therefore, an `OPTIONS` method must be added to relevant resources within AWS
