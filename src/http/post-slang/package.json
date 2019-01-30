@@ -1,0 +1,8 @@
+{
+  "name": "corsblimey-post-slang",
+  "dependencies": {
+    "@architect/data": "^2.0.13",
+    "@architect/functions": "^1.12.1",
+    "uuid": "^3.3.2"
+  }
+}

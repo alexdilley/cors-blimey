@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button id="get">GET</button>
+    <button id="post">POST</button>
+    <a id="logIn" hidden href="https://rjmfxaqb2c.execute-api.eu-west-1.amazonaws.com/staging/auth">log in</a>
+    <form id="logOut" style="display: none;"><button>log out</button></form>
+
+    <script>
+      const BASE_URL = 'https://rjmfxaqb2c.execute-api.eu-west-1.amazonaws.com/staging';
+      const init = { credentials: 'include' };
+
+      // Get/validate session (onload).
+      fetch(`${BASE_URL}/me`, init).then(({ok}) => {
+        if (ok) {
+          document.getElementById('logOut').style.display = 'inline';
+        } else {
+          document.getElementById('logIn').removeAttribute('hidden');
+        }
+      });
+
+      // Clear the session (log out).
+      document.getElementById('logOut').addEventListener('submit', ev => {
+        ev.preventDefault();
+        fetch(`${BASE_URL}/auth`, { ...init, method: 'DELETE' })
+          .then(() => location.reload());
+      });
+
+      // GET handler.
+      document.getElementById('get').addEventListener('click', () => {
+        fetch(`${BASE_URL}/slang`, init)
+          .then(res => res.json())
+          .then(console.log);
+      });
+
+      // POST handler.
+      document.getElementById('post').addEventListener('click', () => {
+        fetch(`${BASE_URL}/slang`, {
+          ...init,
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ saying: 'apples and pears' }),
+        })
+          .then(res => res.json())
+          .then(console.log);
+      });
+    </script>
+  </body>
+</html>
