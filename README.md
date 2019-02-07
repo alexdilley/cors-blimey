@@ -1,5 +1,5 @@
 # cors-blimey
-Serverless CORS with cookie credentials. [[Demo](https://pedantic-brown-b023ed.netlify.com/)]
+Serverless CORS with cookie credentials.
 
 ## Predicament
 
